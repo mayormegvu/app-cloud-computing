@@ -1,13 +1,10 @@
 import React, { Component } from 'react';
+import logo from './logo.svg';
 import './App.css';
-import "bootstrap/dist/css/bootstrap.min.css";
 
 import Amplify from 'aws-amplify';
 import { AmplifyAuthenticator, AmplifySignOut } from '@aws-amplify/ui-react';
 import awsExports from "./aws-exports";
-
-import { DataStore } from "@aws-amplify/datastore";
-import { Note } from "./aws-exports";
 
 Amplify.configure(awsExports);
 
@@ -49,3 +46,4 @@ class App extends Component {
 }
 
 export default App;
+

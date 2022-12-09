@@ -1,0 +1,11 @@
+{
+  "AppSyncApiName": "appcloudcomputing",
+  "DynamoDBBillingMode": "PAY_PER_REQUEST",
+  "DynamoDBEnableServerSideEncryption": false,
+  "AuthCognitoUserPoolId": {
+    "Fn::GetAtt": [
+      "authappcloudcomputing",
+      "Outputs.UserPoolId"
+    ]
+  }
+}
