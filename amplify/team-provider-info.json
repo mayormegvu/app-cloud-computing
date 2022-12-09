@@ -14,6 +14,13 @@
     "categories": {
       "auth": {
         "appcloudcomputing": {}
+      },
+      "api": {
+        "appcloudcomputing": {}
+      },
+      "predictions": {
+        "interpretTextcd8097f2": {},
+        "translateText0d4e91a9": {}
       }
     }
   }

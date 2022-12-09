@@ -13,6 +13,8 @@ type EagerNote = {
   };
   readonly id: string;
   readonly note: string;
+  readonly sentiment: string;
+  readonly spanish: string;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }
@@ -24,6 +26,8 @@ type LazyNote = {
   };
   readonly id: string;
   readonly note: string;
+  readonly sentiment: string;
+  readonly spanish: string;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }

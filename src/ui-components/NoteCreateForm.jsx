@@ -25,15 +25,23 @@ export default function NoteCreateForm(props) {
   } = props;
   const initialValues = {
     note: undefined,
+    sentiment: undefined,
+    spanish: undefined,
   };
   const [note, setNote] = React.useState(initialValues.note);
+  const [sentiment, setSentiment] = React.useState(initialValues.sentiment);
+  const [spanish, setSpanish] = React.useState(initialValues.spanish);
   const [errors, setErrors] = React.useState({});
   const resetStateValues = () => {
     setNote(initialValues.note);
+    setSentiment(initialValues.sentiment);
+    setSpanish(initialValues.spanish);
     setErrors({});
   };
   const validations = {
     note: [{ type: "Required" }],
+    sentiment: [{ type: "Required" }],
+    spanish: [{ type: "Required" }],
   };
   const runValidationTasks = async (fieldName, value) => {
     let validationResponse = validateField(value, validations[fieldName]);
@@ -54,6 +62,8 @@ export default function NoteCreateForm(props) {
         event.preventDefault();
         let modelFields = {
           note,
+          sentiment,
+          spanish,
         };
         const validationResponses = await Promise.all(
           Object.keys(validations).reduce((promises, fieldName) => {
@@ -103,6 +113,8 @@ export default function NoteCreateForm(props) {
           if (onChange) {
             const modelFields = {
               note: value,
+              sentiment,
+              spanish,
             };
             const result = onChange(modelFields);
             value = result?.note ?? value;
@@ -116,6 +128,56 @@ export default function NoteCreateForm(props) {
         errorMessage={errors.note?.errorMessage}
         hasError={errors.note?.hasError}
         {...getOverrideProps(overrides, "note")}
+      ></TextField>
+      <TextField
+        label="Sentiment"
+        isRequired={true}
+        isReadOnly={false}
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              note,
+              sentiment: value,
+              spanish,
+            };
+            const result = onChange(modelFields);
+            value = result?.sentiment ?? value;
+          }
+          if (errors.sentiment?.hasError) {
+            runValidationTasks("sentiment", value);
+          }
+          setSentiment(value);
+        }}
+        onBlur={() => runValidationTasks("sentiment", sentiment)}
+        errorMessage={errors.sentiment?.errorMessage}
+        hasError={errors.sentiment?.hasError}
+        {...getOverrideProps(overrides, "sentiment")}
+      ></TextField>
+      <TextField
+        label="Spanish"
+        isRequired={true}
+        isReadOnly={false}
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              note,
+              sentiment,
+              spanish: value,
+            };
+            const result = onChange(modelFields);
+            value = result?.spanish ?? value;
+          }
+          if (errors.spanish?.hasError) {
+            runValidationTasks("spanish", value);
+          }
+          setSpanish(value);
+        }}
+        onBlur={() => runValidationTasks("spanish", spanish)}
+        errorMessage={errors.spanish?.errorMessage}
+        hasError={errors.spanish?.hasError}
+        {...getOverrideProps(overrides, "spanish")}
       ></TextField>
       <Flex
         justifyContent="space-between"

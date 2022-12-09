@@ -15,14 +15,20 @@ export declare type ValidationResponse = {
 export declare type ValidationFunction<T> = (value: T, validationResponse: ValidationResponse) => ValidationResponse | Promise<ValidationResponse>;
 export declare type NoteUpdateFormInputValues = {
     note?: string;
+    sentiment?: string;
+    spanish?: string;
 };
 export declare type NoteUpdateFormValidationValues = {
     note?: ValidationFunction<string>;
+    sentiment?: ValidationFunction<string>;
+    spanish?: ValidationFunction<string>;
 };
 export declare type FormProps<T> = Partial<T> & React.DOMAttributes<HTMLDivElement>;
 export declare type NoteUpdateFormOverridesProps = {
     NoteUpdateFormGrid?: FormProps<GridProps>;
     note?: FormProps<TextFieldProps>;
+    sentiment?: FormProps<TextFieldProps>;
+    spanish?: FormProps<TextFieldProps>;
 } & EscapeHatchProps;
 export declare type NoteUpdateFormProps = React.PropsWithChildren<{
     overrides?: NoteUpdateFormOverridesProps | undefined | null;

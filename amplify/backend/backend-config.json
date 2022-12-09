@@ -66,5 +66,17 @@
         }
       }
     }
+  },
+  "predictions": {
+    "interpretTextcd8097f2": {
+      "providerPlugin": "awscloudformation",
+      "service": "Comprehend",
+      "interpretType": "interpretText"
+    },
+    "translateText0d4e91a9": {
+      "providerPlugin": "awscloudformation",
+      "service": "Translate",
+      "convertType": "translateText"
+    }
   }
 }
